@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SoadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SoadEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Depts" ReturnType="Collection(SoadModel.Depts_Result)" />
+    <FunctionImport Name="Gend" ReturnType="Collection(SoadModel.Gend_Result)" />
+    <FunctionImport Name="Lev" ReturnType="Collection(SoadModel.Lev_Result)" />
+    <FunctionImport Name="Prof" ReturnType="Collection(SoadModel.Prof_Result)" />
+    <FunctionImport Name="ProSub" ReturnType="Collection(SoadModel.ProSub_Result)" />
+    <FunctionImport Name="Stud" ReturnType="Collection(SoadModel.Stud_Result)" />
+    <FunctionImport Name="StuSub" ReturnType="Collection(SoadModel.StuSub_Result)" />
+    <FunctionImport Name="Sub" ReturnType="Collection(SoadModel.Sub_Result)" />
+    <EntitySet Name="Department" EntityType="SoadModel.Department" />
+    <EntitySet Name="Gender" EntityType="SoadModel.Gender" />
+    <EntitySet Name="Level" EntityType="SoadModel.Level" />
+    <EntitySet Name="Professor" EntityType="SoadModel.Professor" />
+    <EntitySet Name="ProfessorSubjects" EntityType="SoadModel.ProfessorSubjects" />
+    <EntitySet Name="Student" EntityType="SoadModel.Student" />
+    <EntitySet Name="StudentSubjects" EntityType="SoadModel.StudentSubjects" />
+    <EntitySet Name="Subject" EntityType="SoadModel.Subject" />
+    <AssociationSet Name="FK_Department_Professor" Association="SoadModel.FK_Department_Professor">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Department" Association="SoadModel.FK_Student_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_Department" Association="SoadModel.FK_Subject_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Professor_Gender" Association="SoadModel.FK_Professor_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Gender" Association="SoadModel.FK_Student_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Level" Association="SoadModel.FK_Student_Level">
+      <End Role="Level" EntitySet="Level" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessorSubjects_Professor" Association="SoadModel.FK_ProfessorSubjects_Professor">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="ProfessorSubjects" EntitySet="ProfessorSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessorSubjects_Subject" Association="SoadModel.FK_ProfessorSubjects_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="ProfessorSubjects" EntitySet="ProfessorSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSubjects_Student" Association="SoadModel.FK_StudentSubjects_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSubjects_Subject" Association="SoadModel.FK_StudentSubjects_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_Subject" Association="SoadModel.FK_Subject_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Subject1" EntitySet="Subject" />
+    </AssociationSet>
+    <EntitySet Name="TermStauts" EntityType="SoadModel.TermStauts" />
+  </EntityContainer>
+  <ComplexType Name="Depts_Result">
+    <Property Type="Int32" Name="deptId" Nullable="false" />
+    <Property Type="String" Name="department" Nullable="false" />
+    <Property Type="Int32" Name="professorId" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Gend_Result">
+    <Property Type="Int32" Name="genderId" Nullable="false" />
+    <Property Type="String" Name="gender" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Lev_Result">
+    <Property Type="Int32" Name="levelId" Nullable="false" />
+    <Property Type="String" Name="level" Nullable="false" />
+    <Property Type="Boolean" Name="isActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Prof_Result">
+    <Property Type="Int32" Name="professorId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="false" />
+    <Property Type="Int32" Name="genderId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProSub_Result">
+    <Property Type="Int32" Name="professorId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="false" />
+    <Property Type="Int32" Name="genderId" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="Int32" Name="professorId1" Nullable="true" />
+    <Property Type="Int32" Name="subjectId" Nullable="true" />
+    <Property Type="Int32" Name="subjectId1" Nullable="true" />
+    <Property Type="String" Name="subject" Nullable="true" />
+    <Property Type="Double" Name="creditHours" Nullable="true" />
+    <Property Type="Boolean" Name="isActive1" Nullable="true" />
+    <Property Type="Int32" Name="deptId" Nullable="true" />
+    <Property Type="Int32" Name="preSubjectId" Nullable="true" />
+    <Property Type="String" Name="day" Nullable="true" />
+    <Property Type="Time" Name="timeFrom" Nullable="true" />
+    <Property Type="Time" Name="timeTo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Stud_Result">
+    <Property Type="Int32" Name="studentId" Nullable="false" />
+    <Property Type="Int32" Name="levelId" Nullable="true" />
+    <Property Type="Decimal" Name="nationalId" Nullable="false" Precision="14" Scale="0" />
+    <Property Type="String" Name="mobile" Nullable="false" MaxLength="13" />
+    <Property Type="String" Name="password" Nullable="false" />
+    <Property Type="String" Name="firstName" Nullable="false" />
+    <Property Type="String" Name="middelName" Nullable="false" />
+    <Property Type="String" Name="lastName" Nullable="false" />
+    <Property Type="String" Name="surName" Nullable="false" />
+    <Property Type="Int32" Name="dept_Id" Nullable="true" />
+    <Property Type="Int32" Name="genderId" Nullable="true" />
+    <Property Type="String" Name="image" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="StuSub_Result">
+    <Property Type="Int32" Name="studentId" Nullable="false" />
+    <Property Type="Int32" Name="levelId" Nullable="true" />
+    <Property Type="Decimal" Name="nationalId" Nullable="false" Precision="14" Scale="0" />
+    <Property Type="String" Name="mobile" Nullable="false" MaxLength="13" />
+    <Property Type="String" Name="password" Nullable="false" />
+    <Property Type="String" Name="firstName" Nullable="false" />
+    <Property Type="String" Name="middelName" Nullable="false" />
+    <Property Type="String" Name="lastName" Nullable="false" />
+    <Property Type="String" Name="surName" Nullable="false" />
+    <Property Type="Int32" Name="dept_Id" Nullable="true" />
+    <Property Type="Int32" Name="genderId" Nullable="true" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="Int32" Name="student_Id" Nullable="true" />
+    <Property Type="Int32" Name="subject_Id" Nullable="true" />
+    <Property Type="Boolean" Name="isPassed" Nullable="true" />
+    <Property Type="Int32" Name="subjectId" Nullable="true" />
+    <Property Type="String" Name="subject" Nullable="true" />
+    <Property Type="Double" Name="creditHours" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="Int32" Name="deptId" Nullable="true" />
+    <Property Type="Int32" Name="preSubjectId" Nullable="true" />
+    <Property Type="String" Name="day" Nullable="true" />
+    <Property Type="Time" Name="timeFrom" Nullable="true" />
+    <Property Type="Time" Name="timeTo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sub_Result">
+    <Property Type="Int32" Name="subjectId" Nullable="false" />
+    <Property Type="String" Name="subject" Nullable="false" />
+    <Property Type="Double" Name="creditHours" Nullable="false" />
+    <Property Type="Boolean" Name="isActive" Nullable="false" />
+    <Property Type="Int32" Name="deptId" Nullable="true" />
+    <Property Type="Int32" Name="preSubjectId" Nullable="true" />
+    <Property Type="String" Name="day" Nullable="true" />
+    <Property Type="Time" Name="timeFrom" Nullable="true" />
+    <Property Type="Time" Name="timeTo" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="deptId" />
+    </Key>
+    <Property Name="deptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="department1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="professorId" Type="Int32" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Professor" Relationship="SoadModel.FK_Department_Professor" FromRole="Department" ToRole="Professor" />
+    <NavigationProperty Name="Student" Relationship="SoadModel.FK_Student_Department" FromRole="Department" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="SoadModel.FK_Subject_Department" FromRole="Department" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="genderId" />
+    </Key>
+    <Property Name="genderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gender1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Professor" Relationship="SoadModel.FK_Professor_Gender" FromRole="Gender" ToRole="Professor" />
+    <NavigationProperty Name="Student" Relationship="SoadModel.FK_Student_Gender" FromRole="Gender" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="levelId" />
+    </Key>
+    <Property Name="levelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="level1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="SoadModel.FK_Student_Level" FromRole="Level" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="professorId" />
+    </Key>
+    <Property Name="professorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="genderId" Type="Int32" />
+    <NavigationProperty Name="Department" Relationship="SoadModel.FK_Department_Professor" FromRole="Professor" ToRole="Department" />
+    <NavigationProperty Name="Gender" Relationship="SoadModel.FK_Professor_Gender" FromRole="Professor" ToRole="Gender" />
+    <NavigationProperty Name="ProfessorSubjects" Relationship="SoadModel.FK_ProfessorSubjects_Professor" FromRole="Professor" ToRole="ProfessorSubjects" />
+  </EntityType>
+  <EntityType Name="ProfessorSubjects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="professor_Id" Type="Int32" />
+    <Property Name="subject_Id" Type="Int32" />
+    <NavigationProperty Name="Professor" Relationship="SoadModel.FK_ProfessorSubjects_Professor" FromRole="ProfessorSubjects" ToRole="Professor" />
+    <NavigationProperty Name="Subject" Relationship="SoadModel.FK_ProfessorSubjects_Subject" FromRole="ProfessorSubjects" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="studentId" />
+    </Key>
+    <Property Name="studentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="levelId" Type="Int32" />
+    <Property Name="nationalId" Type="Decimal" Nullable="false" Precision="14" Scale="0" />
+    <Property Name="mobile" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="middelName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="surName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dept_Id" Type="Int32" />
+    <Property Name="genderId" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Department" Relationship="SoadModel.FK_Student_Department" FromRole="Student" ToRole="Department" />
+    <NavigationProperty Name="Gender" Relationship="SoadModel.FK_Student_Gender" FromRole="Student" ToRole="Gender" />
+    <NavigationProperty Name="Level" Relationship="SoadModel.FK_Student_Level" FromRole="Student" ToRole="Level" />
+    <NavigationProperty Name="StudentSubjects" Relationship="SoadModel.FK_StudentSubjects_Student" FromRole="Student" ToRole="StudentSubjects" />
+  </EntityType>
+  <EntityType Name="StudentSubjects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_Id" Type="Int32" />
+    <Property Name="subject_Id" Type="Int32" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="SoadModel.FK_StudentSubjects_Student" FromRole="StudentSubjects" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="SoadModel.FK_StudentSubjects_Subject" FromRole="StudentSubjects" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="subjectId" />
+    </Key>
+    <Property Name="subjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subject1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="creditHours" Type="Double" Nullable="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <Property Name="deptId" Type="Int32" />
+    <Property Name="preSubjectId" Type="Int32" />
+    <Property Name="day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeFrom" Type="Time" Precision="7" />
+    <Property Name="timeTo" Type="Time" Precision="7" />
+    <NavigationProperty Name="Department" Relationship="SoadModel.FK_Subject_Department" FromRole="Subject" ToRole="Department" />
+    <NavigationProperty Name="ProfessorSubjects" Relationship="SoadModel.FK_ProfessorSubjects_Subject" FromRole="Subject" ToRole="ProfessorSubjects" />
+    <NavigationProperty Name="StudentSubjects" Relationship="SoadModel.FK_StudentSubjects_Subject" FromRole="Subject" ToRole="StudentSubjects" />
+    <NavigationProperty Name="Subject11" Relationship="SoadModel.FK_Subject_Subject" FromRole="Subject" ToRole="Subject1" />
+    <NavigationProperty Name="Subject2" Relationship="SoadModel.FK_Subject_Subject" FromRole="Subject1" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_Department_Professor">
+    <End Type="SoadModel.Professor" Role="Professor" Multiplicity="0..1" />
+    <End Type="SoadModel.Department" Role="Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="professorId" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="professorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Department">
+    <End Type="SoadModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="SoadModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="deptId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="dept_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_Department">
+    <End Type="SoadModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="SoadModel.Subject" Role="Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="deptId" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="deptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Professor_Gender">
+    <End Type="SoadModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="SoadModel.Professor" Role="Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="genderId" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Gender">
+    <End Type="SoadModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="SoadModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="genderId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Level">
+    <End Type="SoadModel.Level" Role="Level" Multiplicity="0..1" />
+    <End Type="SoadModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level">
+        <PropertyRef Name="levelId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="levelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessorSubjects_Professor">
+    <End Type="SoadModel.Professor" Role="Professor" Multiplicity="0..1" />
+    <End Type="SoadModel.ProfessorSubjects" Role="ProfessorSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="professorId" />
+      </Principal>
+      <Dependent Role="ProfessorSubjects">
+        <PropertyRef Name="professor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessorSubjects_Subject">
+    <End Type="SoadModel.Subject" Role="Subject" Multiplicity="0..1" />
+    <End Type="SoadModel.ProfessorSubjects" Role="ProfessorSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="subjectId" />
+      </Principal>
+      <Dependent Role="ProfessorSubjects">
+        <PropertyRef Name="subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSubjects_Student">
+    <End Type="SoadModel.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="SoadModel.StudentSubjects" Role="StudentSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="studentId" />
+      </Principal>
+      <Dependent Role="StudentSubjects">
+        <PropertyRef Name="student_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSubjects_Subject">
+    <End Type="SoadModel.Subject" Role="Subject" Multiplicity="0..1" />
+    <End Type="SoadModel.StudentSubjects" Role="StudentSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="subjectId" />
+      </Principal>
+      <Dependent Role="StudentSubjects">
+        <PropertyRef Name="subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_Subject">
+    <End Type="SoadModel.Subject" Role="Subject" Multiplicity="0..1" />
+    <End Type="SoadModel.Subject" Role="Subject1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="subjectId" />
+      </Principal>
+      <Dependent Role="Subject1">
+        <PropertyRef Name="preSubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TermStauts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stauts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="From" Type="DateTime" Precision="0" />
+    <Property Name="To" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF23C175-7117-4D42-B2AE-78C80954573E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.SqlClient, Version=2.0.20168.4, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.2.0.0\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Sql.BatchParser, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.Data.Tools.Sql.BatchParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.14.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.14.0\lib\net45\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Assessment, Version=1.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Assessment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Assessment.Types, Version=1.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Assessment.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dmf, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Dmf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dmf.Common, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Dmf.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Assessment, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.Assessment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Collector, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.Collector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.CollectorEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.CollectorEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.HadrData, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.HadrData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.HadrModel, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.HadrModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.RegisteredServers, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.RegisteredServers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.SmoMetadataProvider, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.SmoMetadataProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.SqlParser, Version=15.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Management.SqlParser.150.37051.0\lib\netstandard2.0\Microsoft.SqlServer.Management.SqlParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.SqlScriptPublish, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.SqlScriptPublish.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.XEvent, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.XEvent.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.XEventDbScoped, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.XEventDbScoped.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.XEventDbScopedEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.XEventEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Management.XEventEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.PolicyEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.PolicyEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ServiceBrokerEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.ServiceBrokerEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo.Notebook, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.Smo.Notebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=16.200.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.SqlManagementObjects.161.41011.9\lib\netstandard2.0\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\01-cv-portfolio\css\responsive.css" />
+    <Content Include="assets\01-cv-portfolio\css\styles.css" />
+    <Content Include="assets\02-cv-boxed\css\responsive.css" />
+    <Content Include="assets\02-cv-boxed\css\styles.css" />
+    <Content Include="assets\02-cv-boxed\fonts\ionicons.svg" />
+    <Content Include="assets\02-cv-boxed\images\logos.png" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-1-600x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-10-300x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-11-300x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-12-600x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-13-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-14-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-15-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-16-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-17-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-18-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-19-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-2-600x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-20-400x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-3-600x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-4-600x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-5-600x800.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-6-600x800.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-7-600x800.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-8-300x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\portfolio-9-300x400.jpg" />
+    <Content Include="assets\02-cv-boxed\images\profile-1-250x250.jpg" />
+    <Content Include="assets\02-cv-boxed\images\slider-1-1920x1080.jpg" />
+    <Content Include="assets\02-cv-boxed\images\slider-2-1920x600.jpg" />
+    <Content Include="assets\02-cv-boxed\images\slider-3-1920x1080.jpg" />
+    <Content Include="assets\02-cv-boxed\images\slider-4-1920x600.jpg" />
+    <Content Include="assets\02-cv-boxed\images\slider-5-1920x600.jpg" />
+    <Content Include="assets\03-cv-business\css\responsive.css" />
+    <Content Include="assets\03-cv-business\css\styles.css" />
+    <Content Include="assets\04-elements\css\responsive.css" />
+    <Content Include="assets\04-elements\css\styles.css" />
+    <Content Include="assets\common-css\bootstrap.css" />
+    <Content Include="assets\common-css\fluidbox.min.css" />
+    <Content Include="assets\common-css\ionicons.css" />
+    <Content Include="assets\common-css\ligne.css" />
+    <Content Include="assets\common-css\paginate.css" />
+    <Content Include="assets\common-js\bootstrap.js" />
+    <Content Include="assets\common-js\isotope.pkgd.min.js" />
+    <Content Include="assets\common-js\jquery-3.2.1.min.js" />
+    <Content Include="assets\common-js\jquery.fluidbox.min.js" />
+    <Content Include="assets\common-js\jquery.waypoints.min.js" />
+    <Content Include="assets\common-js\paginate.js" />
+    <Content Include="assets\common-js\paginate.min.js" />
+    <Content Include="assets\common-js\progressbar.min.js" />
+    <Content Include="assets\common-js\scripts.js" />
+    <Content Include="assets\common-js\tapel.js" />
+    <Content Include="assets\common-js\tether.min.js" />
+    <Content Include="assets\fonts\ionicons.svg" />
+    <Content Include="assets\images\logos.png" />
+    <Content Include="assets\images\portfolio-1-600x400.jpg" />
+    <Content Include="assets\images\portfolio-10-300x400.jpg" />
+    <Content Include="assets\images\portfolio-11-300x400.jpg" />
+    <Content Include="assets\images\portfolio-12-600x400.jpg" />
+    <Content Include="assets\images\portfolio-13-400x400.jpg" />
+    <Content Include="assets\images\portfolio-14-400x400.jpg" />
+    <Content Include="assets\images\portfolio-15-400x400.jpg" />
+    <Content Include="assets\images\portfolio-16-400x400.jpg" />
+    <Content Include="assets\images\portfolio-17-400x400.jpg" />
+    <Content Include="assets\images\portfolio-18-400x400.jpg" />
+    <Content Include="assets\images\portfolio-19-400x400.jpg" />
+    <Content Include="assets\images\portfolio-2-600x400.jpg" />
+    <Content Include="assets\images\portfolio-20-400x400.jpg" />
+    <Content Include="assets\images\portfolio-3-600x400.jpg" />
+    <Content Include="assets\images\portfolio-4-600x400.jpg" />
+    <Content Include="assets\images\portfolio-5-600x800.jpg" />
+    <Content Include="assets\images\portfolio-6-600x800.jpg" />
+    <Content Include="assets\images\portfolio-7-600x800.jpg" />
+    <Content Include="assets\images\portfolio-8-300x400.jpg" />
+    <Content Include="assets\images\portfolio-9-300x400.jpg" />
+    <Content Include="assets\images\profile-1-250x250.jpg" />
+    <Content Include="assets\images\slider-1-1920x1080.jpg" />
+    <Content Include="assets\images\slider-2-1920x600.jpg" />
+    <Content Include="assets\images\slider-3-1920x1080.jpg" />
+    <Content Include="assets\images\slider-4-1920x600.jpg" />
+    <Content Include="assets\images\slider-5-1920x600.jpg" />
+    <Content Include="assets\src\css\mk-notifications.css" />
+    <Content Include="assets\src\css\mk-notifications.min.css" />
+    <Content Include="assets\src\css\themes\mk-theme-more.css" />
+    <Content Include="assets\src\js\mk-notifications.js" />
+    <Content Include="assets\src\js\mk-notifications.min.js" />
+    <Content Include="assets\src\sound\close.mp3" />
+    <Content Include="assets\src\sound\custom-close.mp3" />
+    <Content Include="assets\src\sound\custom-notification.mp3" />
+    <Content Include="assets\src\sound\notification.mp3" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FrontUI\css\animate.css" />
+    <Content Include="FrontUI\css\bootstrap.css" />
+    <Content Include="FrontUI\css\magnific-popup.css" />
+    <Content Include="FrontUI\css\owl.carousel.min.css" />
+    <Content Include="FrontUI\css\style.css" />
+    <Content Include="FrontUI\fonts\flaticon\backup.txt" />
+    <Content Include="FrontUI\fonts\flaticon\font\flaticon.css" />
+    <Content Include="FrontUI\fonts\flaticon\font\flaticon.html" />
+    <Content Include="FrontUI\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="FrontUI\fonts\flaticon\font\_flaticon.css" />
+    <Content Include="FrontUI\fonts\fontawesome\css\font-awesome.min.css" />
+    <Content Include="FrontUI\fonts\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="FrontUI\fonts\ionicons\cheatsheet.html" />
+    <Content Include="FrontUI\fonts\ionicons\css\ionicons.css" />
+    <Content Include="FrontUI\fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="FrontUI\fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="FrontUI\images\angularjs.jpg" />
+    <Content Include="FrontUI\images\big_image_1.jpg" />
+    <Content Include="FrontUI\images\big_image_2.jpg" />
+    <Content Include="FrontUI\images\big_image_3.jpg" />
+    <Content Include="FrontUI\images\img_1.jpg" />
+    <Content Include="FrontUI\images\img_2.jpg" />
+    <Content Include="FrontUI\images\img_2_b.jpg" />
+    <Content Include="FrontUI\images\img_3.jpg" />
+    <Content Include="FrontUI\images\istockphoto-545286316-1024x1024.jpg" />
+    <Content Include="FrontUI\images\istockphoto-680412874-1024x1024.jpg" />
+    <Content Include="FrontUI\images\istockphoto-960937636-1024x1024.jpg" />
+    <Content Include="FrontUI\images\javascript.jpg" />
+    <Content Include="FrontUI\images\loc.png" />
+    <Content Include="FrontUI\images\person_1.jpg" />
+    <Content Include="FrontUI\images\person_2.jpg" />
+    <Content Include="FrontUI\images\person_3.jpg" />
+    <Content Include="FrontUI\images\person_4.jpg" />
+    <Content Include="FrontUI\images\person_5.jpg" />
+    <Content Include="FrontUI\images\person_6.jpg" />
+    <Content Include="FrontUI\images\person_testimonial_1.jpg" />
+    <Content Include="FrontUI\images\photoshop.jpg" />
+    <Content Include="FrontUI\images\reactjs.jpg" />
+    <Content Include="FrontUI\images\SC.PNG" />
+    <Content Include="FrontUI\images\webdesign.jpg" />
+    <Content Include="FrontUI\images\WhatsApp Image 2020-07-24 at 6.08.09 PM.jpeg" />
+    <Content Include="FrontUI\images\wordpress.jpg" />
+    <Content Include="FrontUI\js\bootstrap.min.js" />
+    <Content Include="FrontUI\js\google-map.js" />
+    <Content Include="FrontUI\js\jquery-3.2.1.min.js" />
+    <Content Include="FrontUI\js\jquery-migrate-3.0.0.js" />
+    <Content Include="FrontUI\js\jquery.animateNumber.min.js" />
+    <Content Include="FrontUI\js\jquery.magnific-popup.min.js" />
+    <Content Include="FrontUI\js\jquery.stellar.min.js" />
+    <Content Include="FrontUI\js\jquery.waypoints.min.js" />
+    <Content Include="FrontUI\js\main.js" />
+    <Content Include="FrontUI\js\owl.carousel.min.js" />
+    <Content Include="FrontUI\js\popper.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\Shared\newLayout.cshtml" />
+    <Content Include="FrontUI\.DS_Store" />
+    <Content Include="FrontUI\css\bootstrap.css.map" />
+    <Content Include="FrontUI\fonts\.DS_Store" />
+    <Content Include="FrontUI\fonts\flaticon\.DS_Store" />
+    <Content Include="FrontUI\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="FrontUI\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="FrontUI\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="FrontUI\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="FrontUI\fonts\flaticon\license\license.pdf" />
+    <Content Include="FrontUI\fonts\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="FrontUI\fonts\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="FrontUI\fonts\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="FrontUI\fonts\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="FrontUI\fonts\ionicons\.DS_Store" />
+    <Content Include="FrontUI\fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="FrontUI\fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="FrontUI\fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="FrontUI\images\.DS_Store" />
+    <Content Include="FrontUI\scss\.DS_Store" />
+    <Content Include="FrontUI\scss\bootstrap-grid.scss" />
+    <Content Include="FrontUI\scss\bootstrap-reboot.scss" />
+    <Content Include="FrontUI\scss\bootstrap.scss" />
+    <Content Include="FrontUI\scss\mixins\_alert.scss" />
+    <Content Include="FrontUI\scss\mixins\_background-variant.scss" />
+    <Content Include="FrontUI\scss\mixins\_badge.scss" />
+    <Content Include="FrontUI\scss\mixins\_border-radius.scss" />
+    <Content Include="FrontUI\scss\mixins\_box-shadow.scss" />
+    <Content Include="FrontUI\scss\mixins\_breakpoints.scss" />
+    <Content Include="FrontUI\scss\mixins\_buttons.scss" />
+    <Content Include="FrontUI\scss\mixins\_caret.scss" />
+    <Content Include="FrontUI\scss\mixins\_clearfix.scss" />
+    <Content Include="FrontUI\scss\mixins\_float.scss" />
+    <Content Include="FrontUI\scss\mixins\_forms.scss" />
+    <Content Include="FrontUI\scss\mixins\_gradients.scss" />
+    <Content Include="FrontUI\scss\mixins\_grid-framework.scss" />
+    <Content Include="FrontUI\scss\mixins\_grid.scss" />
+    <Content Include="FrontUI\scss\mixins\_hover.scss" />
+    <Content Include="FrontUI\scss\mixins\_image.scss" />
+    <Content Include="FrontUI\scss\mixins\_list-group.scss" />
+    <Content Include="FrontUI\scss\mixins\_lists.scss" />
+    <Content Include="FrontUI\scss\mixins\_nav-divider.scss" />
+    <Content Include="FrontUI\scss\mixins\_navbar-align.scss" />
+    <Content Include="FrontUI\scss\mixins\_pagination.scss" />
+    <Content Include="FrontUI\scss\mixins\_reset-text.scss" />
+    <Content Include="FrontUI\scss\mixins\_resize.scss" />
+    <Content Include="FrontUI\scss\mixins\_screen-reader.scss" />
+    <Content Include="FrontUI\scss\mixins\_size.scss" />
+    <Content Include="FrontUI\scss\mixins\_table-row.scss" />
+    <Content Include="FrontUI\scss\mixins\_text-emphasis.scss" />
+    <Content Include="FrontUI\scss\mixins\_text-hide.scss" />
+    <Content Include="FrontUI\scss\mixins\_text-truncate.scss" />
+    <Content Include="FrontUI\scss\mixins\_transition.scss" />
+    <Content Include="FrontUI\scss\mixins\_visibility.scss" />
+    <Content Include="FrontUI\scss\style.scss" />
+    <Content Include="FrontUI\scss\utilities\_align.scss" />
+    <Content Include="FrontUI\scss\utilities\_background.scss" />
+    <Content Include="FrontUI\scss\utilities\_borders.scss" />
+    <Content Include="FrontUI\scss\utilities\_clearfix.scss" />
+    <Content Include="FrontUI\scss\utilities\_display.scss" />
+    <Content Include="FrontUI\scss\utilities\_embed.scss" />
+    <Content Include="FrontUI\scss\utilities\_flex.scss" />
+    <Content Include="FrontUI\scss\utilities\_float.scss" />
+    <Content Include="FrontUI\scss\utilities\_position.scss" />
+    <Content Include="FrontUI\scss\utilities\_screenreaders.scss" />
+    <Content Include="FrontUI\scss\utilities\_sizing.scss" />
+    <Content Include="FrontUI\scss\utilities\_spacing.scss" />
+    <Content Include="FrontUI\scss\utilities\_text.scss" />
+    <Content Include="FrontUI\scss\utilities\_visibility.scss" />
+    <Content Include="FrontUI\scss\_alert.scss" />
+    <Content Include="FrontUI\scss\_badge.scss" />
+    <Content Include="FrontUI\scss\_breadcrumb.scss" />
+    <Content Include="FrontUI\scss\_button-group.scss" />
+    <Content Include="FrontUI\scss\_buttons.scss" />
+    <Content Include="FrontUI\scss\_card.scss" />
+    <Content Include="FrontUI\scss\_carousel.scss" />
+    <Content Include="FrontUI\scss\_close.scss" />
+    <Content Include="FrontUI\scss\_code.scss" />
+    <Content Include="FrontUI\scss\_custom-forms.scss" />
+    <Content Include="FrontUI\scss\_custom.scss" />
+    <Content Include="FrontUI\scss\_dropdown.scss" />
+    <Content Include="FrontUI\scss\_forms.scss" />
+    <Content Include="FrontUI\scss\_functions.scss" />
+    <Content Include="FrontUI\scss\_grid.scss" />
+    <Content Include="FrontUI\scss\_images.scss" />
+    <Content Include="FrontUI\scss\_input-group.scss" />
+    <Content Include="FrontUI\scss\_jumbotron.scss" />
+    <Content Include="FrontUI\scss\_list-group.scss" />
+    <Content Include="FrontUI\scss\_media.scss" />
+    <Content Include="FrontUI\scss\_mixins.scss" />
+    <Content Include="FrontUI\scss\_modal.scss" />
+    <Content Include="FrontUI\scss\_nav.scss" />
+    <Content Include="FrontUI\scss\_navbar.scss" />
+    <Content Include="FrontUI\scss\_pagination.scss" />
+    <Content Include="FrontUI\scss\_popover.scss" />
+    <Content Include="FrontUI\scss\_print.scss" />
+    <Content Include="FrontUI\scss\_progress.scss" />
+    <Content Include="FrontUI\scss\_reboot.scss" />
+    <Content Include="FrontUI\scss\_root.scss" />
+    <Content Include="FrontUI\scss\_tables.scss" />
+    <Content Include="FrontUI\scss\_tooltip.scss" />
+    <Content Include="FrontUI\scss\_transitions.scss" />
+    <Content Include="FrontUI\scss\_type.scss" />
+    <Content Include="FrontUI\scss\_utilities.scss" />
+    <Content Include="FrontUI\scss\_variables.scss" />
+    <Content Include="assets\02-cv-boxed\fonts\ionicons.eot" />
+    <Content Include="assets\02-cv-boxed\fonts\ionicons.ttf" />
+    <Content Include="assets\02-cv-boxed\fonts\ionicons.woff" />
+    <Content Include="assets\fonts\ionicons.eot" />
+    <Content Include="assets\fonts\ionicons.ttf" />
+    <Content Include="assets\fonts\ionicons.woff" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Student\Register.cshtml" />
+    <Content Include="Views\Student\SignUp.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Shared\ProfileLayout.cshtml" />
+    <Content Include="Views\Student\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="ProfilesImg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{4acbc598-bbc9-4ade-b55d-a7ba53903e6f}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{7e2f5f6f-c074-4f77-b505-72f71436e622}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{c5609172-187b-4196-9524-b2db4bdba747}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54059</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54059/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

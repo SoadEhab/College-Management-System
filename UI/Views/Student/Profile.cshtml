@@ -1,0 +1,743 @@
+﻿@using DataModel;
+@{
+    SoadEntities db = new SoadEntities();
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/ProfileLayout.cshtml";
+    var data = Session["UserData"];
+    int Id = 0;
+    int check = 0;
+    if (data == null)
+    {
+        Response.Redirect("/Student/SignUp");
+    }
+    else
+    {
+        Id = (int)data;
+
+        var studentsub = db.StudentSubjects.Where(x => x.student_Id == Id && x.status == (int)BLL.StudentStatus.regist).ToList();
+        if (studentsub.Count > 0)
+        {
+            check = 1;
+        }
+    }
+}
+<input type="hidden" id="hdnStudid" value="@Id" />
+<input type="hidden" id="hdnValid" value="@check" />
+<div class="row">
+    <div class="col-sm-4">
+        <div class="heading">
+            <h3 id="dropright"><b id="txt" style="color: #5bc0de">Subjects</b></h3>
+
+        </div>
+    </div><!-- col-sm-4 -->
+</div><!-- row -->
+<div class="container">
+    <br />
+    <table id="table1" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Subject
+                </th>
+                <th>
+                    Professor
+                </th>
+                <th>
+                    Credit Hours
+                </th>
+                <th>
+                    Day
+                </th>
+                <th>
+                    Time
+                </th>
+                <th>Register</th>
+            </tr>
+        </thead>
+        <tbody class="tbody1"></tbody>
+    </table>
+
+
+    <br />
+    <br />
+    <div id="section">
+        <p style="text-align: center;">
+            Credit Hours <span class="dot" style="border-color: black;width: 42px;height:42px; border-radius: 50%;display: inline-block;background-color: lightgrey;text-align:center;margin-left: 10px;line-height: 40px;color:white" id="danger"><b>0</b></span>
+        </p>
+        <br />
+        <br />
+        <table class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Subject
+                    </th>
+                    <th>
+                        Professor
+                    </th>
+                    <th>
+                        Credit Hours
+                    </th>
+                    <th>
+                        Day
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th id="thCancl" >
+                        Cancel
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody2" id="tbody2"></tbody>
+        </table>
+        <br />
+        <button type="button" class="btn btn-info" id="btnok" style="pointer-events:none;display:none">Regist</button>
+        <button type="button" class="btn btn-info" id="btnUpdate" style="pointer-events:none;display:none">Update</button>
+        <button type="button" class="btn btn-info" id="btnDrob" style="display:none;">Drop</button>
+    </div>
+
+
+</div>
+
+<script>
+    var sublist = new Array();
+    var addIds = new Array();
+
+    $(document).ready(function () {
+
+        $.ajax({
+            url: '/Student/TermStauts', type: "POST", processData: false,
+            dataType: 'json',
+            contentType: false,
+            success: function (result) {
+                if (result.Stauts == "regist") {
+                    if ($('#hdnValid').val() == 0) {
+                        LoadSubjects();
+                        $('#btnUpdate').hide()
+                        $('#btnok').show()
+                    } else {
+                        LoadSubjects();
+                        LoadSubjects2("regist");
+                        $('#btnUpdate').show()
+                        $('#btnok').hide()
+                    }
+                    debugger;
+                    var to = new Date(result.To);
+                    var today = new Date();
+                    var day1 = new Date((today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1)))
+                    var day2 = new Date((today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 2)))
+                    if (dateFormate(today) == dateFormate(to)) {
+                        Command: toastr["info"]("We would like to inform you that registration will stop today")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+                    }
+                    else if (dateFormate(day1) == dateFormate(to)) {
+
+                        Command: toastr["info"]("We would like to inform you that registration will stop within one day")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+
+                    }
+                    else if (dateFormate(day2) == dateFormate(to)) {
+                        Command: toastr["info"]("We would like to inform you that registration will stop within two days")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+                    }
+                }
+                else if (result.Stauts == "drop") {
+                    LoadSubjects2("drop");
+                    $('#btnDrob').show();
+                    $('#clickright').hide();
+                    $('#clickdown').hide();
+                    $('#table1').hide();
+                    var to = new Date(result.To);
+                    var today = new Date();
+                    var day1 = new Date((today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1)))
+                    var day2 = new Date((today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 2)))
+                    if (dateFormate(today) == dateFormate(to)) {
+                        Command: toastr["info"]("We would like to inform you that drop-out will stop today")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+                    }
+                    else if (dateFormate(day1) == dateFormate(to)) {
+
+                        Command: toastr["info"]("We would like to inform you that drop-out will stop within one day")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+
+                    }
+                    else if (dateFormate(day2) == dateFormate(to)) {
+                        Command: toastr["info"]("We would like to inform you that drop-out will stop within two days")
+                        $('#toast-container').removeClass("toast-top-right").addClass("toast-bottom-right").delay(10000);
+                    }
+                }
+                else {
+                    $('#thCancl').hide();
+                    $('#btnUpdate').hide()
+                    $('#btnok').hide()
+                    $('#clickright').hide();
+                    $('#clickdown').hide();
+                    $('#table1').hide();
+                    LoadSubjects2();
+                     
+                }
+            }
+
+        });
+        $('.dataTables_length').hide();
+        $('#section').hide();
+        $('#btnok').click(function () {
+            //$.each(sublist, function (key, item) {
+            //    alert(item);
+            //});
+            var hdnID = $('#hdnStudid').val();
+
+            $.ajax({
+                url: '/Student/Save',
+                type: "POST",
+                data: {
+                    "subArray": sublist,
+                    'ID': hdnID,
+                },
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    if (result == "success") {
+                        swal(
+                            'successfully registered',
+                            '',
+                            'success'
+                        )
+                    }
+                    else {
+                        swal(
+                            'Register Again',
+                            '',
+                            'error'
+                        )
+
+                    }
+                }
+            });
+
+        })
+        $('#btnUpdate').click(function () {
+            //$.each(sublist, function (key, item) {
+            //    alert(item);
+            //});
+            var hdnID = $('#hdnStudid').val();
+
+            $.ajax({
+                url: '/Student/Update',
+                type: "POST",
+                data: {
+                    "subArray": sublist,
+                    'ID': hdnID,
+                },
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    if (result == "success") {
+                        swal(
+                            'successfully Update',
+                            '',
+                            'success'
+                        )
+                    }
+                    else {
+                        swal(
+                            'Choise Again',
+                            '',
+                            'error'
+                        )
+
+                    }
+                }
+            });
+
+        })
+        $('#btnDrob').click(function () {
+            var hdnID = $('#hdnStudid').val();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to regist this subjects again!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: '/Student/Drop',
+                            type: "POST",
+                            data: {
+                                "subArray": dropsubs,
+                                'ID': hdnID,
+                            },
+                            dataType: "json",
+                            async: false,
+                            success: function (result) {
+                                if (result == true) {
+                                    swal(
+                                        'successfully Drop out',
+                                        '',
+                                        'success'
+                                    )
+                                    LoadSubjects2("drop")
+                                }
+                                else {
+                                    swal(
+                                        'Try Again',
+                                        '',
+                                        'error'
+                                    )
+
+                                }
+                            }
+                        });
+                    } else {
+                        swal("Drob-out is canceld");
+                    }
+                });
+        });
+        $("#imageUpload").change(function () {
+            readURL(this);
+
+        });
+    });
+    var allhours = 0;
+    var allsub = [];
+    function button(allhours) {
+        if (allhours >= 12 && allhours <= 18) {
+            $('#btnok').css("pointer-events", "visible");
+            $('#btnUpdate').css("pointer-events", "visible");
+        }
+        else {
+            $('#btnok').css("pointer-events", "none");
+            $('#btnUpdate').css("pointer-events", "none");
+        }
+
+    }
+    function readURL(input) {
+        var id = $('#hdnStudid').val();
+        var data = new FormData();
+        var files = $("#imageUpload").get(0).files;
+        if (files.length > 0) { data.append("HelpSectionImages", files[0]); }
+        else {
+            common.showNotification('warning', 'Please select file to upload.', 'top', 'right');
+            return false;
+        }
+        var extension = $("#imageUpload").val().split('.').pop().toUpperCase();
+        if (extension != "PNG" && extension != "JPG" && extension != "GIF" && extension != "JPEG") {
+            common.showNotification('warning', 'Imvalid image file format.', 'top', 'right');
+            return false;
+        }
+        $.ajax({
+            url: '/Student/SaveProfileImage?id=' + id, type: "POST", processData: false,
+            data: data, dataType: 'json',
+            contentType: false,
+            success: function (response) {
+                if (response != null || response != '')
+                    ViweImage(input)
+            },
+            error: function (er) { }
+
+        });
+        return false;
+    }
+    function ViweImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    var subs = [];
+    function LoadSubjects() {
+        var stdID = $('#hdnStudid').val();
+        $.ajax({
+            url: "/Student/LoadAllSubjects?id=" + stdID,
+            type: "GET",
+            data: {},
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                debugger;
+                $.each(result.StudentSub, function (key, item) {
+                    addIds.push(item.subjectId)
+                })
+                subs = result.AllData;
+                allsub = result.StudentSub;
+                $('#table1').dataTable({
+                    destroy: true,
+                    data: result.StudentSub,
+                    "bLengthChange": false,
+                    "bInfo": false,
+                    "order": [[0, "desc"]],
+                    columns: [
+                        { 'data': 'subject1' },
+                        { 'data': 'ProfName' },
+                        { 'data': 'creditHours' },
+                        {
+                            'data': null,
+                            render: function (data, type, row) {
+                                return '<p id="day_' + data.subjectId + '">' + data.day + '</p> ';
+                            }
+                        },
+                        {
+                            'data': null,
+                            render: function (data, type, row) {
+                                return '<td ><p id="time_' + data.subjectId + '">' + data.timeFrom.substring(0, 8) + ' - ' + data.timeTo.substring(0, 8) + '</p></td > ';
+                            }
+                        },
+                        {
+                            'data': null,
+                            render: function (data, type, row) {
+                                return '<a href="javascript:void(0);" onclick=SelectRow(' + data.subjectId + ',' + data.creditHours + '); return false;>' +
+                                    '<i class="fa fa-check-circle " style="font-size: x-large;color: green;"></i></a>';
+                            }
+                        },
+
+                    ],
+                    createdRow: function (row, data, dataIndex, cells) {
+                        $(row).addClass("tr_" + data.subjectId);
+                    },
+                })
+            }
+        });
+    }
+    function LoadSubjects2(status) {
+        debugger;
+        var stdID = $('#hdnStudid').val();
+        if (status == "regist") {
+            $.ajax({
+                url: "/Student/LoadAllSubjects2?id=" + stdID,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    allhours = 0;
+                    allsub = result;
+                    var html = '';
+                    $.each(result, function (key, item) {
+                        html += '<tr id="tr2_' + item.subjectId + '">';
+                        html += '<td id="sub">' + item.subject1 + '</td>';
+                        html += '<td id="subid">' + item.ProfName + '</td>';
+                        html += '<td id="hour">' + item.creditHours + '</td>';
+                        html += '<td id="day">' + item.day + '</td>';
+                        html += '<td id="time">' + item.timeFrom.substring(0, 8) + ' - ' + item.timeTo.substring(0, 8) + '</td>';
+                        html += '<td><a href="javascript:void(0);" onclick=DeleteRow(' + item.subjectId + ',' + item.creditHours + '); return false;>' +
+                            '<i class="fa fa-times-circle" style="font-size: x-large;color: red;"></i></a> </td> ';
+                        html += '</tr>';
+
+                        allhours += parseFloat(item.creditHours);
+                        button(allhours);
+                        $("#danger").text(allhours);
+                        color();
+                        sublist.push(item.subjectId);
+                    });
+                    $('.tbody2').html(html);
+                    if (result != null) {
+                        $('#section').show();
+                    }
+                }
+            });
+        }
+        else if (status == "drop") {
+            $.ajax({
+                url: "/Student/LoadAllSubjects2?id=" + stdID,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    allhours = 0;
+                    allsub = result;
+                    var html = '';
+                    $.each(result, function (key, item) {
+                        debugger;
+                        html += '<tr id="tr2_' + item.subjectId + '">';
+                        html += '<td id="sub">' + item.subject1 + '</td>';
+                        html += '<td id="subid">' + item.ProfName + '</td>';
+                        html += '<td id="hour">' + item.creditHours + '</td>';
+                        html += '<td id="day">' + item.day + '</td>';
+                        html += '<td id="time">' + item.timeFrom.substring(0, 8) + ' - ' + item.timeTo.substring(0, 8) + '</td>';
+                        html += '<td><input onclick=Drob(' + item.subjectId + ',' + item.creditHours + ') id="Chk_' + item.subjectId + '"type="checkbox"  name="Cancel" value="' + item.subjectId + '"></td>'
+                        html += '</tr>';
+
+                        allhours += parseFloat(item.creditHours);
+                        button(allhours);
+                        $("#danger").text(allhours);
+                        color();
+                        sublist.push(item.subjectId);
+                    });
+                    $('.tbody2').html(html);
+                    if (result != null) {
+                        $('#section').show();
+                    }
+                }
+            });
+        }
+        else {
+           
+             $.ajax({
+                url: "/Student/LoadAllSubjects2?id=" + stdID,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    allhours = 0;
+                    allsub = result;
+                    var html = '';
+                    $.each(result, function (key, item) {
+                        debugger;
+                        html += '<tr id="tr2_' + item.subjectId + '">';
+                        html += '<td id="sub">' + item.subject1 + '</td>';
+                        html += '<td id="subid">' + item.ProfName + '</td>';
+                        html += '<td id="hour">' + item.creditHours + '</td>';
+                        html += '<td id="day">' + item.day + '</td>';
+                        html += '<td  id="time">' + item.timeFrom.substring(0, 8) + ' - ' + item.timeTo.substring(0, 8) + '</td>';
+                        html += '</tr>';
+
+                        allhours += parseFloat(item.creditHours);
+                        button(allhours);
+                        $("#danger").text(allhours);
+                        color();
+                        
+                    });
+                    $('.tbody2').html(html);
+                    if (result != null) {
+                        $('#section').show();
+                    }
+                }
+            });
+        }
+
+    }
+    function SelectRow(id, ch) {
+        var hours = allhours + ch;
+        if (hours <= 18) {
+            $('#section').show();
+            var day = $('#day_' + id).text();
+            var time = $('#time_' + id).text();
+            var start1 = time.substring(0, 5);
+            var end1 = time.substring(10, 16);
+            var check = true;
+            var i = 0;
+            var Start2 = new Array()
+            var End2 = new Array();
+            var day2 = new Array();
+            $('.tbody2').find('tr').each(function (i, el) {
+
+                var $tds = $(this).find('td'),
+                    tday = $tds.eq(3).text(),
+                    ttime = $tds.eq(4).text();
+                var start2 = ttime.substring(0, 5);
+                var end2 = ttime.substring(10, 16);
+                Start2.push(start2);
+                End2.push(end2);
+                day2.push(tday);
+
+            });
+            $.ajax({
+                url: "/Student/ValidTime?start1=" + start1 + "&end1=" + end1 + "&Start2=" + Start2 + "&End2=" + End2 + "&day1=" + day + "&day2=" + day2,
+                type: "GET",
+                data: {
+                    "start1": start1,
+                    "end1": end1,
+                    "Start2": Start2,
+                    "End2": End2,
+                    "day1": day,
+                    "day2": day2,
+                },
+                dataType: "json",
+                async: false,
+                success: function (result) {
+
+                    if (result == true) {
+
+                        var index = $.inArray(id, addIds);
+                        addIds.splice(index, 1);
+                        var newdate = [];
+                        $.each(subs, function (key, item) {
+                            for (var i = 0; i < addIds.length; i++) {
+
+                                if (addIds[i] == item.subjectId) {
+                                    newdate.push(item)
+                                }
+                            }
+                        });
+                        $('#table1').dataTable({
+                            destroy: true,
+                            data: newdate,
+                            "bLengthChange": false,
+                            "bInfo": false,
+                            columns: [
+                                { 'data': 'subject1' },
+                                { 'data': 'ProfName' },
+                                { 'data': 'creditHours' },
+                                {
+                                    'data': null,
+                                    render: function (data, type, row) {
+                                        return '<td ><p id="day_' + data.subjectId + '">' + data.day + '</p></td > ';
+                                    }
+                                },
+                                {
+                                    'data': null,
+                                    render: function (data, type, row) {
+                                        return '<td ><p id="time_' + data.subjectId + '">' + data.timeFrom.substring(0, 8) + ' - ' + data.timeTo.substring(0, 8) + '</p></td > ';
+                                    }
+                                },
+                                {
+                                    'data': null,
+                                    render: function (data, type, row) {
+                                        return '<a href="javascript:void(0);" onclick=SelectRow(' + data.subjectId + ',' + data.creditHours + '); return false;>' +
+                                            '<i class="fa fa-check-circle " style="font-size: x-large;color: green;"></i></a>';
+                                    }
+                                },
+
+                            ],
+                            createdRow: function (row, data, dataIndex, cells) {
+                                $(row).addClass("tr_" + data.subjectId);
+                            },
+                        })
+                        debugger;
+                        sublist.push(id);
+
+                        $.each(subs, function (key, item) {
+                            if (item.subjectId == id) {
+                                var html = '';
+                                html += '<tr id="tr2_' + item.subjectId + '">';
+                                html += '<td id="sub">' + item.subject1 + '</td>';
+                                html += '<td id="subid">' + item.ProfName + '</td>';
+                                html += '<td id="hour">' + item.creditHours + '</td>';
+                                html += '<td id="day">' + item.day + '</td>';
+                                html += '<td id="time">' + item.timeFrom.substring(0, 8) + ' - ' + item.timeTo.substring(0, 8) + '</td>';
+                                html += '<td><a href="javascript:void(0);" onclick=DeleteRow(' + item.subjectId + ',' + item.creditHours + '); return false;>' +
+                                    '<i class="fa fa-times-circle" style="font-size: x-large;color: red;"></i></a> </td> ';
+                                html += '</tr>';
+                                $('.tbody2').append(html);
+                                allhours += parseFloat(ch);
+                                button(allhours);
+                                $("#danger").text(allhours);
+
+                            }
+                        });
+                        color();
+                    }
+                    else {
+                        toastr.error('there is confilct', '', { timeOut: 5000 })
+                    }
+                }
+
+            });
+
+        } else {
+            toastr.error('You skip the limit of hours', '', { timeOut: 5000 })
+        }
+    }
+    function DeleteRow(id, ch) {
+        debugger;
+        $('#tr2_' + id).remove();
+        addIds.push(id)
+        //remove index from array(sublist)
+        var index = $.inArray(id, sublist);
+        sublist.splice(index, 1);
+        var newdate = [];
+        $.each(subs, function (key, item) {
+            for (var i = 0; i < addIds.length; i++) {
+                if (addIds[i] == item.subjectId) {
+                    newdate.push(item)
+                }
+            }
+        });
+        $('#table1').dataTable({
+            destroy: true,
+            data: newdate,
+            "bLengthChange": false,
+            "bInfo": false,
+            columns: [
+                { 'data': 'subject1' },
+                { 'data': 'ProfName' },
+                { 'data': 'creditHours' },
+                {
+                    'data': null,
+                    render: function (data, type, row) {
+                        return '<td ><p id="day_' + data.subjectId + '">' + data.day + '</p></td > ';
+                    }
+                },
+                {
+                    'data': null,
+                    render: function (data, type, row) {
+                        return '<td ><p id="time_' + data.subjectId + '">' + data.timeFrom.substring(0, 8) + ' - ' + data.timeTo.substring(0, 8) + '</p></td > ';
+                    }
+                },
+                {
+                    'data': null,
+                    render: function (data, type, row) {
+                        return '<a href="javascript:void(0);" onclick=SelectRow(' + data.subjectId + ',' + data.creditHours + '); return false;>' +
+                            '<i class="fa fa-check-circle " style="font-size: x-large;color: green;"></i></a>';
+                    }
+                },
+
+            ],
+            createdRow: function (row, data, dataIndex, cells) {
+                $(row).addClass("tr_" + data.subjectId);
+            },
+        })
+        $.each(allsub, function (key, item) {
+
+            if (item.subjectId == id) {
+
+                allhours -= parseFloat(ch);
+                if (allhours == 0) {
+                    $('#section').hide();
+                }
+                button(allhours);
+                $("#danger").text(allhours);
+            }
+        });
+        color();
+    }
+    function color() {
+        if (allhours >= 12 && allhours < 18) {
+            $('#danger').css("background-color", "#00b8ff");
+        }
+        else if (allhours == 18) {
+            $('#danger').css("background-color", "green");
+        }
+        else if (allhours == 0) {
+            $('#danger').css("background-color", "lightgrey");
+        }
+        else {
+            $('#danger').css("background-color", "red");
+        }
+    }
+    var dropsubs = new Array()
+    function Drob(id, hour) {
+
+        if ($('#Chk_' + id).prop("checked") == true) {
+            allhours -= parseFloat(hour);
+            dropsubs.push(id);
+        }
+        else if ($('#Chk_' + id).prop("checked") == false) {
+            allhours += parseFloat(hour);
+            var index = $.inArray(id, dropsubs);
+            dropsubs.splice(index, 1);
+        }
+        color();
+        $("#danger").text(allhours);
+    }
+    function dateFormate(date) {
+        var year = date.getFullYear();
+
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+
+        return day + '/' + month + '/' + year;
+    }
+
+
+</script>

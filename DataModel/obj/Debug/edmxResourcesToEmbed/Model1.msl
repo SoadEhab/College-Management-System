@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SoadModelStoreContainer" CdmEntityContainer="SoadEntities">
+    <FunctionImportMapping FunctionImportName="Depts" FunctionName="SoadModel.Store.Depts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Depts_Result">
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="professorId" ColumnName="professorId" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Gend" FunctionName="SoadModel.Store.Gend">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Gend_Result">
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Lev" FunctionName="SoadModel.Store.Lev">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Lev_Result">
+          <ScalarProperty Name="levelId" ColumnName="levelId" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Prof" FunctionName="SoadModel.Store.Prof">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Prof_Result">
+          <ScalarProperty Name="professorId" ColumnName="professorId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProSub" FunctionName="SoadModel.Store.ProSub">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.ProSub_Result">
+          <ScalarProperty Name="professorId" ColumnName="professorId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="professorId1" ColumnName="professorId1" />
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+          <ScalarProperty Name="subjectId1" ColumnName="subjectId1" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="creditHours" ColumnName="creditHours" />
+          <ScalarProperty Name="isActive1" ColumnName="isActive1" />
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+          <ScalarProperty Name="preSubjectId" ColumnName="preSubjectId" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+          <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Stud" FunctionName="SoadModel.Store.Stud">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Stud_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="levelId" ColumnName="levelId" />
+          <ScalarProperty Name="nationalId" ColumnName="nationalId" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="middelName" ColumnName="middelName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="surName" ColumnName="surName" />
+          <ScalarProperty Name="dept_Id" ColumnName="dept-Id" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="StuSub" FunctionName="SoadModel.Store.StuSub">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.StuSub_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="levelId" ColumnName="levelId" />
+          <ScalarProperty Name="nationalId" ColumnName="nationalId" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="middelName" ColumnName="middelName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="surName" ColumnName="surName" />
+          <ScalarProperty Name="dept_Id" ColumnName="dept-Id" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="student_Id" ColumnName="student-Id" />
+          <ScalarProperty Name="subject_Id" ColumnName="subject-Id" />
+          <ScalarProperty Name="isPassed" ColumnName="isPassed" />
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="creditHours" ColumnName="creditHours" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+          <ScalarProperty Name="preSubjectId" ColumnName="preSubjectId" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+          <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sub" FunctionName="SoadModel.Store.Sub">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoadModel.Sub_Result">
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="creditHours" ColumnName="creditHours" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+          <ScalarProperty Name="preSubjectId" ColumnName="preSubjectId" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+          <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="SoadModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="professorId" ColumnName="professorId" />
+          <ScalarProperty Name="department1" ColumnName="department" />
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="SoadModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="gender1" ColumnName="gender" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Level">
+      <EntityTypeMapping TypeName="SoadModel.Level">
+        <MappingFragment StoreEntitySet="Level">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="level1" ColumnName="level" />
+          <ScalarProperty Name="levelId" ColumnName="levelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professor">
+      <EntityTypeMapping TypeName="SoadModel.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="professorId" ColumnName="professorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfessorSubjects">
+      <EntityTypeMapping TypeName="SoadModel.ProfessorSubjects">
+        <MappingFragment StoreEntitySet="ProfessorSubjects">
+          <ScalarProperty Name="subject_Id" ColumnName="subject_Id" />
+          <ScalarProperty Name="professor_Id" ColumnName="professor_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="SoadModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="dept_Id" ColumnName="dept-Id" />
+          <ScalarProperty Name="surName" ColumnName="surName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="middelName" ColumnName="middelName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="nationalId" ColumnName="nationalId" />
+          <ScalarProperty Name="levelId" ColumnName="levelId" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentSubjects">
+      <EntityTypeMapping TypeName="SoadModel.StudentSubjects">
+        <MappingFragment StoreEntitySet="StudentSubjects">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="subject_Id" ColumnName="subject-Id" />
+          <ScalarProperty Name="student_Id" ColumnName="student-Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subject">
+      <EntityTypeMapping TypeName="SoadModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+          <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="preSubjectId" ColumnName="preSubjectId" />
+          <ScalarProperty Name="deptId" ColumnName="deptId" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="creditHours" ColumnName="creditHours" />
+          <ScalarProperty Name="subject1" ColumnName="subject" />
+          <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TermStauts">
+      <EntityTypeMapping TypeName="SoadModel.TermStauts">
+        <MappingFragment StoreEntitySet="TermStauts">
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Stauts" ColumnName="Stauts" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

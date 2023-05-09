@@ -1,0 +1,292 @@
+﻿
+@{
+    Layout = null;
+    DataModel.SoadEntities db = new DataModel.SoadEntities();
+    var data = Session["UserData"];
+    int Id = 0;
+    string image = string.Empty;
+    string Name = string.Empty;
+    string fName = string.Empty;
+    string dept = string.Empty;
+    string level = string.Empty;
+    if (data == null)
+    {
+        Response.Redirect("/Student/SignUp");
+    }
+    else
+    {
+        Id = (int)data;
+        var stud = db.Student.FirstOrDefault(x => x.studentId == Id);
+        image = "/ProfilesImg/" + stud.image;
+        Name = stud.firstName + " " + stud.lastName;
+        fName = stud.firstName + "'s";
+        dept = stud.Department.department1;
+        level = stud.Level.level1;
+    }
+}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>@fName Profile</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+
+    <!-- Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+
+    <!-- Stylesheets -->
+
+    <link href="~/assets/common-css/bootstrap.css" rel="stylesheet">
+
+    <link href="~/assets/common-css/ionicons.css" rel="stylesheet">
+
+    <link href="~/assets/common-css/fluidbox.min.css" rel="stylesheet">
+
+    <link href="~/assets/01-cv-portfolio/css/styles.css" rel="stylesheet">
+
+    <link href="~/assets/01-cv-portfolio/css/responsive.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map" rel="stylesheet" />*@
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- datatable -->
+    @*<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/src/css/mk-notifications.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"crossorigin="anonymous">
+    </script>
+
+    <style>
+        .avatar-wrapper {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 50px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 1px 1px 15px -5px black;
+            transition: all .3s ease;
+        }
+
+
+
+        &:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+            &:hover .profile-pic {
+                opacity: .5;
+            }
+
+        .profile-pic {
+            height: 100%;
+            width: 100%;
+            transition: all .3s ease;
+        }
+
+        &:after {
+            font-family: FontAwesome;
+            content: "\f007";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 190px;
+            background: #ecf0f1;
+            color: #34495e;
+            text-align: center;
+        }
+
+
+
+        .upload-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .fa-arrow-circle-up {
+            position: absolute;
+            font-size: 234px;
+            top: -17px;
+            left: 0;
+            text-align: center;
+            opacity: 0;
+            transition: all .3s ease;
+            color: #34495e;
+        }
+
+        &:hover .fa-arrow-circle-up {
+            opacity: .9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="heading-wrapper">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="info">
+                            @*<i class="icon ion-ios-location-outline"></i>*@
+                            <div class="right-area">
+                                <img src="~/FrontUI/images/sci.png" style="width: 19%;" />
+
+                                Faculty Of Science
+                            </div><!-- right-area -->
+
+                        </div><!-- info -->
+
+                    </div><!-- col-sm-4 -->
+                    <div style=" margin-top: 17px;margin-left: 646px;">
+                        <a style="color:white" href="/Student/Index">Home</a> / <a style="color:white" href="/Student/LogOut">LogOut</a>
+                    </div>
+
+                    @*<div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="info">
+
+                                <div class="right-area">
+                                   <a class="navbar-brand absolute">Subjects </a>
+                                </div> right-area
+                            </div> info
+                        </div> col-sm-4
+
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="info">
+                                <i class="icon ion-ios-chatboxes-outline"></i>
+                                <div class="right-area">
+                                    <h5>contact@colorlib.com</h5>
+                                    <h6>REPLY IN 24 HOURS</h6>
+                                </div> right-area
+                            </div> info
+                        </div> col-sm-4*@
+                </div><!-- row -->
+            </div><!-- heading-wrapper -->
+
+
+        </div><!-- container -->
+    </header>
+
+    <section class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 col-lg-2"></div>
+                <div class="col-md-10 col-lg-8">
+                    <div class="intro">
+
+                        <div class="profile-img avatar-wrapper">
+                            <img class="profile-pic" src="@image" />
+                            <div class="upload-button">
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                            </div>
+                            <input id="imageUpload" class="file-upload" type="file" accept="image/*" />
+                        </div>
+
+                        <h2><b>@Name</b></h2>
+
+                        <ul class="information margin-tb-30">
+                            <li><b>Department : </b>@dept</li>
+                            <li><b>Level : </b>@level</li>
+
+                        </ul>
+
+                    </div><!-- intro -->
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </section><!-- intro-section -->
+
+
+    <div class="container">
+        @RenderBody()
+        <br />
+    </div><!-- portfolioContainer -->
+
+
+    <footer>
+        @*<p class="copyright">*@
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        @*Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>*@
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        @*</p>*@
+        <div class="social-links mt-3 text-center">
+            <span style="margin-right: 12px;" class="text-light"><b style="color:#5bc0de">Powered by:</b><b style="color:black;margin-left:6px">Captain Dev</b></span>
+            <img src="~/assets/images/Capture.PNG" alt="" style=" vertical-align: middle; width:50px; height: 50px; border-radius:50%;border:hidden;display:inline-block " class="img-fluid">
+        </div>
+    </footer>
+
+
+
+    <!-- SCIPTS -->
+
+    <script src="~/assets/common-js/jquery-3.2.1.min.js"></script>
+
+    <script src="~/assets/common-js/tether.min.js"></script>
+
+    <script src="~/assets/common-js/bootstrap.js"></script>
+
+    <script src="~/assets/common-js/isotope.pkgd.min.js"></script>
+
+    <script src="~/assets/common-js/jquery.waypoints.min.js"></script>
+
+    <script src="~/assets/common-js/progressbar.min.js"></script>
+
+    <script src="~/assets/common-js/jquery.fluidbox.min.js"></script>
+    <script src="~/assets/common-js/paginate.min.js"></script>
+    <script src="~/assets/common-js/scripts.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>*@
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--  datatable  -->
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script href="~/assets/src/js/mk-notifications.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.profile-pic').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".file-upload").on('change', function () {
+                readURL(this);
+            });
+
+            $(".upload-button").on('click', function () {
+                $(".file-upload").click();
+            });
+        });
+    </script>
+</body>
+</html>

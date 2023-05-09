@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/newLayout.cshtml";
+}
+
+
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/FrontUI/images/big_image_2.jpg);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Register</h1>
+                    <p class="bcrumb"><a href="/Student/Index">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Register</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center" id="pnl">
+            <div class="col-md-7">
+                <div class="form-wrap">
+                    <h2 class="mb-5">Register new account</h2>
+                    <form>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">First Name</label>
+                                <input type="text" id="txtfname" class="form-control py-2">
+                                <span id="validtxtfname" style="display:none ; font-size: 13px; color:red">Please enter your first name</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Middle Name</label>
+                                <input type="text" id="txtmname" class="form-control py-2 ">
+                                <span id="validtxtmname" style="display:none ;font-size: 13px; color:red">Please enter your middle name</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Last Name</label>
+                                <input type="text" id="txtlname" class="form-control py-2">
+                                <span id="validtxtlname" style="display:none ;font-size: 13px; color:red">Please enter your last name</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Sur Name</label>
+                                <input type="text" id="txtsname" class="form-control py-2">
+                                <span id="validtxtsname" style="display:none ;font-size: 13px; color:red">Please enter your sur name</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">National id</label>
+                                <input type="number" id="txtnid" class="form-control py-2">
+                                <span id="validtxtnid" style="display:none ;font-size: 13px; color:red">Please enter your National ID</span>
+                                <span id="validtxtnid2" style="display:none ;font-size: 13px; color:red"> National ID must be 14 numbers</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Mobile</label>
+                                <input type="tel" id="telmobile" class="form-control py-2">
+                                <span id="validtelmobile" style="display:none ;font-size: 13px; color:red">Please enter your mobile</span>
+                                <span id="validtelmobile2" style="display:none ;font-size: 13px; color:red">Mobile number must be 11 number</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Level</label>
+                                <select id="ddllevel" class="form-control py-2"></select>
+                                <span id="validddllevel" style="display:none ;font-size: 13px; color:red">Please select your level</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Department</label>
+                                <select id="ddldepartment" class="form-control py-2"></select>
+                                <span id="validddldepartment" style="display:none ;font-size: 13px; color:red">Please select your department</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Gender</label>
+                                <select id="ddlgender" class="form-control py-2"></select>
+                                <span id="validddlgender" style="display:none ;font-size: 13px; color:red">Please select your gender</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Password</label>
+                                <input type="password" id="password" class="form-control py-2">
+                                <span id="validpassword" style="display:none ;font-size: 13px; color:red">Please enter your password</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12 form-group">
+                                <label for="name">Confirm Password</label>
+                                <input type="password" id="confpassword" class="form-control py-2">
+                                <span id="validconfpassword" style="display:none ;font-size: 13px; color:red">Password doesn't match</span>
+                                <span id="validconfpassword2" style="display:none ;font-size: 13px; color:red">Please enter your password again</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="button" id="btnregister" value="Register" class="btn btn-primary px-5 py-2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        LoadAllGenders();
+        LoadAllDepartments();
+        LoadAllLevels();
+        $('#btnregister').click(function () {
+            $('#validtxtfname').hide();
+            $('#validtxtmname').hide();
+            $('#validtxtlname').hide();
+            $('#validtxtsname').hide();
+            $('#validtxtnid').hide();
+            $('#validtelmobile').hide();
+            $('#validtxtnid2').hide();
+            $('#validtelmobile2').hide();
+            $('#validddllevel').hide();
+            $('#validddldepartment').hide();
+            $('#validddlgender').hide();
+            $('#validpassword').hide();
+            $('#validconfpassword2').hide();
+            $('#validconfpassword').hide();
+
+
+            var fname = $('#txtfname').val();
+            var mname = $('#txtmname').val();
+            var lname = $('#txtlname').val();
+            var sname = $('#txtsname').val();
+            var nid = $('#txtnid').val();
+            var mobile = $('#telmobile').val();
+            var password = $('#password').val();
+            var confirm = $('#confpassword').val();
+            debugger;
+            var gender = $('#ddlgender').val();
+            var department = $('#ddldepartment').val();
+            var level = $('#ddllevel').val();
+            if (fname == "" || fname == undefined) {
+                $('#validtxtfname').show()
+            }
+            else if (mname == "" || mname == undefined) {
+                $('#validtxtmname').show()
+            }
+            else if (lname == "" || lname == undefined) {
+                $('#validtxtlname').show()
+            }
+            else if (sname == "" || sname == undefined) {
+                $('#validtxtsname').show()
+            }
+            else if (nid == "" || nid == undefined) {
+                $('#validtxtnid').show()
+            }
+            else if (nid.length != 14 ) {
+                $('#validtxtnid2').show()
+            } 
+            else if (mobile == "" || mobile == undefined) {
+                $('#validtelmobile').show()
+            }
+            else if (mobile.length != 11) {
+                $('#validtelmobile2').show()
+            }
+            else if (level == -1 ) {
+                $('#validddllevel').show()
+            }
+            else if (department == -1) {
+                $('#validddldepartment').show()
+            }
+            else if (gender == -1 ) {
+                $('#validddlgender').show()
+            }
+            else if (password == "" || password == undefined) {
+                $('#validpassword').show()
+            }
+            else if (confirm == "" || confirm == undefined) {
+                $('#validconfpassword2').show()
+            }
+            else if (confirm != password) {
+                $('#validconfpassword').show()
+            }
+            else {
+                $.ajax({
+                    url: "/Student/AddStudent?levelId=" + level +
+                        "&nationalId=" + nid +
+                        "&mobile=" + mobile +
+                        "&password=" + password +
+                        "&firstName=" + fname +
+                        "&middelName=" + mname +
+                        "&lastName=" + lname +
+                        "&surName=" + sname +
+                        "&deptId=" + department +
+                        "&genderId=" + gender,
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result == "success") {
+                            Swal.fire(                                'Successfully Registered',                                '',                                'success'                            )
+                        }
+                        else {
+                            Swal.fire(                                'This NationalID Already Exists',                                '',                                'error'                            )
+                        }
+                    }
+                });
+            }
+            
+        })
+    })
+    function LoadAllGenders() {
+        $.ajax({
+            url: "/Student/LoadAllGenders",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1>Select Your Gender</option>';
+                $.each(result, function (key, item) {
+                    html += '<option value = ' + item.genderId + '>';
+                    html += item.gender1 + '</option>'
+                });
+                $('#ddlgender').html(html);
+            }
+        });
+    }
+    function LoadAllDepartments() {
+        $.ajax({
+            url: "/Student/LoadAllDepartments",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '<option value=-1>Select Your Department</option>';
+                $.each(result, function (key, item) {
+                    html += '<option value = ' + item.deptId + '>';
+                    html += item.department1 + '</option>'
+                });
+                $('#ddldepartment').html(html);
+            }
+        });
+    }
+    function LoadAllLevels() {
+        $.ajax({
+            url: "/Student/LoadAllLevels",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                var html = '<option value=-1>Select Your Level</option>';
+                $.each(result, function (key, item) {
+                    html += '<option value = ' + item.levelid + '>';
+                    html += item.levelname + '</option>'
+                });
+                $('#ddllevel').html(html);
+            }
+        });
+    }
+</script>

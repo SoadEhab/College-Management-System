@@ -1,0 +1,47 @@
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\BLL.dll
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\BLL.pdb
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\obj\Debug\BLL.dll
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\obj\Debug\BLL.pdb
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\DataModel.dll
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\EntityFramework.dll
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\DataModel.pdb
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\DataModel.dll.config
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\bin\Debug\EntityFramework.xml
+C:\Users\elmohands\source\repos\ProjectCourse\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\BLL.dll
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\BLL.pdb
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.dll
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.pdb
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.dll.config
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\bin\Debug\EntityFramework.xml
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.dll
+C:\Users\Azza\Desktop\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.pdb
+D:\Project\ProjectCourse\BLL\bin\Debug\BLL.dll
+D:\Project\ProjectCourse\BLL\bin\Debug\BLL.pdb
+D:\Project\ProjectCourse\BLL\bin\Debug\DataModel.dll
+D:\Project\ProjectCourse\BLL\bin\Debug\EntityFramework.dll
+D:\Project\ProjectCourse\BLL\bin\Debug\DataModel.pdb
+D:\Project\ProjectCourse\BLL\bin\Debug\DataModel.dll.config
+D:\Project\ProjectCourse\BLL\bin\Debug\EntityFramework.xml
+D:\Project\ProjectCourse\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Project\ProjectCourse\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Project\ProjectCourse\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Project\ProjectCourse\BLL\obj\Debug\BLL.dll
+D:\Project\ProjectCourse\BLL\obj\Debug\BLL.pdb
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\BLL.dll
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\BLL.pdb
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.dll
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.pdb
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\DataModel.dll.config
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\bin\Debug\EntityFramework.xml
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.dll
+C:\Users\Alm El-Deen\Downloads\ProjectCourse\ProjectCourse\BLL\obj\Debug\BLL.pdb

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e43e50acddcd428d8ba122c9542c68a4" Name="Diagram1">
+        <EntityTypeShape EntityType="SoadModel.Department" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="SoadModel.Gender" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="SoadModel.Level" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="SoadModel.Professor" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="SoadModel.ProfessorSubjects" Width="1.5" PointX="9.75" PointY="7.25" />
+        <EntityTypeShape EntityType="SoadModel.Student" Width="1.5" PointX="7.5" PointY="3.5" />
+        <EntityTypeShape EntityType="SoadModel.StudentSubjects" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SoadModel.Subject" Width="1.5" PointX="7.5" PointY="8.5" />
+        <AssociationConnector Association="SoadModel.FK_Department_Professor" />
+        <AssociationConnector Association="SoadModel.FK_Student_Department" />
+        <AssociationConnector Association="SoadModel.FK_Subject_Department" />
+        <AssociationConnector Association="SoadModel.FK_Professor_Gender" />
+        <AssociationConnector Association="SoadModel.FK_Student_Gender" />
+        <AssociationConnector Association="SoadModel.FK_Student_Level" />
+        <AssociationConnector Association="SoadModel.FK_ProfessorSubjects_Professor" />
+        <AssociationConnector Association="SoadModel.FK_ProfessorSubjects_Subject" />
+        <AssociationConnector Association="SoadModel.FK_StudentSubjects_Student" />
+        <AssociationConnector Association="SoadModel.FK_StudentSubjects_Subject" />
+        <AssociationConnector Association="SoadModel.FK_Subject_Subject" />
+        <EntityTypeShape EntityType="SoadModel.TermStauts" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
